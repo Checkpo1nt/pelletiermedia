@@ -1106,6 +1106,25 @@ section {
   object-fit: cover;
 }
 
+.project-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.project-title-row h3 {
+  margin: 0;
+}
+
+.project-cta {
+  padding: 0.44rem 0.82rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+}
+
 .project-visual {
   margin-top: 0.15rem;
   height: 180px;
