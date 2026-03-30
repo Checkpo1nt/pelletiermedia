@@ -327,6 +327,11 @@ a {
 }
 
 .typed-line {
+  display: block;
+  min-height: 1.25em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #f4bcbc;
   text-shadow: 0 0 12px rgba(196, 61, 61, 0.24);
 }
@@ -1792,6 +1797,8 @@ section {
 
   .nav-links {
     display: none;
+    opacity: 0;
+    pointer-events: none;
     position: absolute;
     top: calc(100% + 0.55rem);
     right: 1rem;
@@ -1820,6 +1827,10 @@ section {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
+  }
+
+  .top-nav:not(.open) .nav-links {
+    display: none !important;
   }
 }
 

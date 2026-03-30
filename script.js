@@ -226,6 +226,14 @@ if (yearEl) {
 }
 
 if (menuToggle && nav) {
+  const closeNavMenu = () => {
+    nav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  // Keep mobile nav closed by default on first paint.
+  closeNavMenu();
+
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -238,13 +246,9 @@ if (menuToggle && nav) {
     });
   });
 
-  const closeNavMenu = () => {
-    nav.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  };
-
   window.addEventListener('resize', closeNavMenu);
   window.addEventListener('orientationchange', closeNavMenu);
+  mobileViewport.addEventListener('change', closeNavMenu);
 }
 
 if ('IntersectionObserver' in window) {
