@@ -273,17 +273,22 @@ if ('IntersectionObserver' in window) {
 
 if (typedLine) {
   const lines = JSON.parse(typedLine.dataset.lines || '[]');
+  const fixedPrompt = '>  ';
+  const promptPattern = /^>\s*/;
+  const contentLines = lines.map((line) => String(line).replace(promptPattern, ''));
   let lineIndex = 0;
   let charIndex = 0;
   let erasing = false;
 
-  const tick = () => {
-    if (!lines.length) return;
+  typedLine.textContent = fixedPrompt;
 
-    const current = lines[lineIndex];
+  const tick = () => {
+    if (!contentLines.length) return;
+
+    const current = contentLines[lineIndex];
 
     if (!erasing) {
-      typedLine.textContent = current.slice(0, charIndex + 1);
+      typedLine.textContent = `${fixedPrompt}${current.slice(0, charIndex + 1)}`;
       charIndex += 1;
 
       if (charIndex === current.length) {
@@ -292,12 +297,12 @@ if (typedLine) {
         return;
       }
     } else {
-      typedLine.textContent = current.slice(0, charIndex - 1);
+      typedLine.textContent = `${fixedPrompt}${current.slice(0, charIndex - 1)}`;
       charIndex -= 1;
 
       if (charIndex === 0) {
         erasing = false;
-        lineIndex = (lineIndex + 1) % lines.length;
+        lineIndex = (lineIndex + 1) % contentLines.length;
       }
     }
 

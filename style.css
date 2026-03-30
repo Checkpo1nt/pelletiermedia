@@ -1782,7 +1782,7 @@ section {
 
 @media (max-width: 1200px) {
   .menu-toggle {
-    display: inline-flex;
+    display: none;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
@@ -1796,7 +1796,7 @@ section {
   }
 
   .nav-links {
-    display: none;
+    display: none !important;
     opacity: 0;
     pointer-events: none;
     position: absolute;
@@ -1823,7 +1823,7 @@ section {
   }
 
   .top-nav.open .nav-links {
-    display: flex;
+    display: none;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
