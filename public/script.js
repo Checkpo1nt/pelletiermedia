@@ -226,6 +226,14 @@ if (yearEl) {
 }
 
 if (menuToggle && nav) {
+  const closeNavMenu = () => {
+    nav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  // Keep mobile nav closed by default on first paint.
+  closeNavMenu();
+
   menuToggle.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -238,13 +246,9 @@ if (menuToggle && nav) {
     });
   });
 
-  const closeNavMenu = () => {
-    nav.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  };
-
   window.addEventListener('resize', closeNavMenu);
   window.addEventListener('orientationchange', closeNavMenu);
+  mobileViewport.addEventListener('change', closeNavMenu);
 }
 
 if ('IntersectionObserver' in window) {
@@ -269,17 +273,22 @@ if ('IntersectionObserver' in window) {
 
 if (typedLine) {
   const lines = JSON.parse(typedLine.dataset.lines || '[]');
+  const fixedPrompt = '>  ';
+  const promptPattern = /^>\s*/;
+  const contentLines = lines.map((line) => String(line).replace(promptPattern, ''));
   let lineIndex = 0;
   let charIndex = 0;
   let erasing = false;
 
-  const tick = () => {
-    if (!lines.length) return;
+  typedLine.textContent = fixedPrompt;
 
-    const current = lines[lineIndex];
+  const tick = () => {
+    if (!contentLines.length) return;
+
+    const current = contentLines[lineIndex];
 
     if (!erasing) {
-      typedLine.textContent = current.slice(0, charIndex + 1);
+      typedLine.textContent = `${fixedPrompt}${current.slice(0, charIndex + 1)}`;
       charIndex += 1;
 
       if (charIndex === current.length) {
@@ -288,12 +297,12 @@ if (typedLine) {
         return;
       }
     } else {
-      typedLine.textContent = current.slice(0, charIndex - 1);
+      typedLine.textContent = `${fixedPrompt}${current.slice(0, charIndex - 1)}`;
       charIndex -= 1;
 
       if (charIndex === 0) {
         erasing = false;
-        lineIndex = (lineIndex + 1) % lines.length;
+        lineIndex = (lineIndex + 1) % contentLines.length;
       }
     }
 
