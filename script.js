@@ -13,7 +13,7 @@ const heroVisual = document.querySelector('.hero-visual');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const mobileViewport = window.matchMedia('(max-width: 980px)');
 
-const initWaterCursor = () => {
+const initFluidGlassCursor = () => {
   const supportsFinePointer =
     window.matchMedia('(pointer:fine)').matches || window.matchMedia('(any-pointer:fine)').matches;
   const supportsHover =
@@ -21,17 +21,16 @@ const initWaterCursor = () => {
   if (!(supportsFinePointer && supportsHover)) return;
 
   const wrap = document.createElement('div');
-  wrap.className = 'water-cursor-wrap';
+  wrap.className = 'fluid-glass-cursor-wrap';
   const cursor = document.createElement('div');
-  cursor.className = 'water-cursor';
+  cursor.className = 'fluid-glass-cursor';
   cursor.innerHTML = `
-    <div class="water-cursor-refract-bands"></div>
-    <div class="water-cursor-top-meniscus"></div>
-    <div class="water-cursor-inner-clear"></div>
-    <div class="water-cursor-inner-ring"></div>
+    <div class="fluid-glass-cursor-lens"></div>
+    <div class="fluid-glass-cursor-glint"></div>
+    <div class="fluid-glass-cursor-edge"></div>
   `;
   const rippleLayer = document.createElement('div');
-  rippleLayer.className = 'water-cursor-ripple-layer';
+  rippleLayer.className = 'fluid-glass-cursor-ripple-layer';
 
   wrap.appendChild(cursor);
   document.body.appendChild(wrap);
@@ -60,8 +59,8 @@ const initWaterCursor = () => {
   let currentScaleY = 1;
   let currentSkew = 0;
 
-  const baseSize = 46;
-  const hoverSize = 66;
+  const baseSize = 44;
+  const hoverSize = 62;
   const spring = 0.18;
   const hoverSelector =
     "a, button, [data-cursor-hover], input, textarea, select, [role='button'], .project-card, .system-card, .meter-item, .repo-tile, .timeline-row, .signal-card";
@@ -70,7 +69,7 @@ const initWaterCursor = () => {
 
   const createRipple = (rx, ry) => {
     const ripple = document.createElement('div');
-    ripple.className = 'water-cursor-ripple';
+    ripple.className = 'fluid-glass-cursor-ripple';
     ripple.style.left = `${rx}px`;
     ripple.style.top = `${ry}px`;
     rippleLayer.appendChild(ripple);
@@ -163,21 +162,18 @@ const initWaterCursor = () => {
     wrap.style.transform = `translate3d(${x - size / 2}px, ${y - size / 2}px, 0)`;
     cursor.style.transform = `rotate(${currentAngle}deg) scale(${currentScaleX * pressScale}, ${currentScaleY * pressScale})`;
 
-    const refractAlpha = Math.min(0.18, 0.07 + speed * 0.0042);
-    const edgeAlpha = Math.min(0.28, 0.16 + speed * 0.0035);
-    const ringAlpha = Math.min(0.22, 0.11 + speed * 0.0026);
-    const shellAlpha = Math.min(0.16, 0.07 + speed * 0.0028);
-    const meniscusAlpha = Math.min(0.16, 0.08 + speed * 0.0028);
+    const edgeAlpha = Math.min(0.34, 0.18 + speed * 0.004);
+    const glintAlpha = Math.min(0.42, 0.2 + speed * 0.0046);
+    const frostAlpha = Math.min(0.2, 0.08 + speed * 0.0028);
+    const warpX = Math.max(-9, Math.min(9, vx * 0.38));
+    const warpY = Math.max(-7, Math.min(7, vy * 0.28));
 
-    cursor.style.setProperty('--refract-alpha', refractAlpha.toFixed(3));
     cursor.style.setProperty('--edge-alpha', edgeAlpha.toFixed(3));
-    cursor.style.setProperty('--ring-alpha', ringAlpha.toFixed(3));
-    cursor.style.setProperty('--shell-alpha', shellAlpha.toFixed(3));
-    cursor.style.setProperty('--meniscus-alpha', meniscusAlpha.toFixed(3));
+    cursor.style.setProperty('--glint-alpha', glintAlpha.toFixed(3));
+    cursor.style.setProperty('--frost-alpha', frostAlpha.toFixed(3));
     cursor.style.setProperty('--motion-skew', `${currentSkew.toFixed(2)}deg`);
-
-    const topFocus = Math.max(12, Math.min(24, 16 - vy * 0.22));
-    cursor.style.setProperty('--top-focus', `${topFocus}%`);
+    cursor.style.setProperty('--warp-x', `${warpX.toFixed(2)}px`);
+    cursor.style.setProperty('--warp-y', `${warpY.toFixed(2)}px`);
 
     prevX = x;
     prevY = y;
@@ -213,7 +209,7 @@ const initWaterCursor = () => {
   );
 };
 
-initWaterCursor();
+initFluidGlassCursor();
 
 window.addEventListener('load', () => {
   window.requestAnimationFrame(() => {
