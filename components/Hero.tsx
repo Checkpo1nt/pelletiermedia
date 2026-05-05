@@ -20,7 +20,7 @@ export function Hero() {
           Automation systems for people who move faster than their operations.
         </Reveal>
         <Reveal className="mt-6 max-w-2xl text-lg leading-8 text-muted">
-          I use OpenClaw to connect agents, tools, workflows, data, and decision logic into systems that remove manual work, route decisions, and push execution forward.
+          I use OpenClaw to take in emails, tasks, orders, leads, and reports, check what needs to happen, and send the next step to the right place.
         </Reveal>
         <Reveal className="mt-8 flex flex-wrap gap-3">
           <motion.a

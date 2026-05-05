@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Gavin Pelletier | Automation Systems",
   description:
-    "Independent automation operator and builder using OpenClaw to connect agents, workflows, data, and execution logic.",
+    "Independent automation operator and builder using OpenClaw to connect agents, workflows, data, and operational workflows.",
 };
 
 export default function RootLayout({

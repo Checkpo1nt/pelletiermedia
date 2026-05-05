@@ -16,9 +16,9 @@ import { SectionBadge } from "@/components/SectionBadge";
 import { cardHover, revealVariants, staggerContainer } from "@/lib/animations";
 
 const systems = [
-  ["Workflow Automation", "Replace repeated manual tasks with reliable execution flows.", Workflow],
-  ["Delegated Agent Systems", "Use AI agents to monitor, summarize, route, decide, and trigger next steps.", Bot],
-  ["Data-to-Action Loops", "Turn raw inputs into alerts, decisions, reports, and follow-up actions.", DatabaseZap],
+  ["Workflow Automation", "Replace repeated manual tasks with simple flows that run the same way every time.", Workflow],
+  ["Delegated Agent Systems", "Use AI helpers to read, summarize, sort, and prepare the next step.", Bot],
+  ["Data-to-Action Loops", "Turn raw inputs into alerts, reports, and follow-up tasks.", DatabaseZap],
   ["Lead Routing", "Capture, qualify, organize, and route leads before they go cold.", Route],
   ["Sourcing Checks", "Evaluate suppliers, quotes, freight, risks, margins, and viability faster.", Handshake],
   ["Automated Profitability Studies", "After an order closes, run the cost, fee, margin, fulfillment, and supplier review automatically.", LineChart],

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BrainCircuit, FileInput, Send } from "lucide-react";
+import { ArrowRight, CheckSquare, FileInput, Send } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SectionBadge } from "@/components/SectionBadge";
 import { cardHover, revealVariants, staggerContainer } from "@/lib/animations";
@@ -13,13 +13,13 @@ const layers = [
     items: ["Leads", "messages", "files", "vendor data", "task updates", "reports"],
   },
   {
-    title: "OpenClaw Layer",
-    icon: BrainCircuit,
-    items: ["Agents", "memory", "rules", "workflows", "routing", "monitoring"],
+    title: "Handling Layer",
+    icon: CheckSquare,
+    items: ["read", "check", "sort", "assign", "send", "record"],
     featured: true,
   },
   {
-    title: "Execution Layer",
+    title: "Output Layer",
     icon: Send,
     items: ["Alerts", "follow-ups", "dashboards", "decisions", "SOPs", "completed tasks"],
   },
@@ -32,10 +32,10 @@ export function OpenClawDiagram() {
         <Reveal>
           <SectionBadge>OpenClaw</SectionBadge>
           <h2 className="headline max-w-3xl text-4xl leading-tight text-ink sm:text-5xl">
-            OpenClaw turns operating context into action.
+            OpenClaw moves work from input to output.
           </h2>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">
-            OpenClaw connects AI agents, automation pipelines, memory, tools, and execution logic. It is built around a simple belief: AI is only useful when it can take context, make decisions, and move work forward.
+            OpenClaw keeps the boring office loop moving: read what came in, check what matters, choose the next step, and send it where it belongs.
           </p>
         </Reveal>
 
