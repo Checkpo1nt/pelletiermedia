@@ -19,7 +19,7 @@ export function Navbar() {
         aria-label="Main navigation"
         className="glass-panel flex items-center justify-between gap-4 rounded-2xl px-4 py-3"
       >
-        <a className="focus-ring text-sm font-semibold text-ink" href="#top">
+        <a className="focus-ring headline text-2xl leading-none text-ink sm:text-[1.7rem]" href="#top">
           Gavin Pelletier
         </a>
         <div className="hidden items-center gap-1 md:flex">

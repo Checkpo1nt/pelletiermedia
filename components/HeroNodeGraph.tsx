@@ -85,7 +85,8 @@ export function HeroNodeGraph() {
       ))}
 
       <motion.div
-        className="absolute left-1/2 top-1/2 z-20 flex h-32 w-32 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[2rem] border border-white/80 bg-[linear-gradient(145deg,#ffffff,#dfeaff)] text-center shadow-[0_26px_60px_rgba(37,99,235,0.25),inset_0_1px_0_rgba(255,255,255,0.92),inset_0_-18px_35px_rgba(37,99,235,0.09)]"
+        className="absolute z-20 flex h-32 w-32 flex-col items-center justify-center rounded-[2rem] border border-white/80 bg-[linear-gradient(145deg,#ffffff,#dfeaff)] text-center shadow-[0_26px_60px_rgba(37,99,235,0.25),inset_0_1px_0_rgba(255,255,255,0.92),inset_0_-18px_35px_rgba(37,99,235,0.09)]"
+        style={{ left: "calc(50% - 4rem)", top: "calc(50% - 4rem)" }}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
@@ -93,9 +94,6 @@ export function HeroNodeGraph() {
       >
         <GitBranch className="mb-2 h-6 w-6 text-blue-electric" aria-hidden="true" />
         <strong className="headline text-2xl text-ink">OpenClaw</strong>
-        <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-electric">
-          leverage hub
-        </span>
       </motion.div>
 
       <motion.div
@@ -112,7 +110,7 @@ export function HeroNodeGraph() {
               key={node.label}
               variants={revealVariants}
               className="absolute flex min-w-28 items-center gap-2 rounded-2xl border border-white/75 bg-[#f8f7f2] px-3 py-2 text-sm font-semibold text-ink shadow-tactile"
-              style={{ left: node.x, top: node.y, transform: "translate(-50%, -50%)" }}
+              style={{ left: `calc(${node.x} - 3.5rem)`, top: `calc(${node.y} - 1.25rem)` }}
             >
               <Icon className="h-4 w-4 text-blue-electric" aria-hidden="true" />
               {node.label}

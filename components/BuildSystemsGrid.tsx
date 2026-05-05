@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import {
   BellRing,
   Bot,
-  ChartNoAxesCombined,
   DatabaseZap,
+  LineChart,
   GitBranch,
   Handshake,
   Route,
@@ -21,7 +21,7 @@ const systems = [
   ["Data-to-Action Loops", "Turn raw inputs into alerts, decisions, reports, and follow-up actions.", DatabaseZap],
   ["Lead Routing", "Capture, qualify, organize, and route leads before they go cold.", Route],
   ["Sourcing Checks", "Evaluate suppliers, quotes, freight, risks, margins, and viability faster.", Handshake],
-  ["Margin Monitoring", "Track cost, price, fees, and profit changes before they become expensive.", ChartNoAxesCombined],
+  ["Automated Profitability Studies", "Compare costs, prices, fees, margins, and scenarios before decisions get expensive.", LineChart],
   ["Reporting Systems", "Turn activity into operator-ready summaries and dashboards.", GitBranch],
   ["Follow-Up Orchestration", "Keep prospects, vendors, customers, and internal work moving automatically.", BellRing],
 ] as const;

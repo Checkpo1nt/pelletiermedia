@@ -7,7 +7,7 @@ import { revealVariants, staggerContainer } from "@/lib/animations";
 
 const timeline = [
   {
-    date: "2024-Now",
+    date: "2025-Now",
     title: "Independent Automation Work",
     copy: "Building OpenClaw-powered workflows, agent systems, lead flows, sourcing checks, reporting loops, and execution automations.",
   },

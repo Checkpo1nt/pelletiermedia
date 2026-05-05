@@ -11,9 +11,14 @@ export function Hero() {
     <section id="top" className="container-shell grid gap-10 pb-20 pt-14 lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:pb-28 lg:pt-20">
       <div>
         <Reveal>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-electric/15 bg-white/58 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-blue-electric shadow-sm">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-xl border border-white/75 bg-white/50 px-3.5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-blue-electric shadow-inset">
             <Layers3 className="h-3.5 w-3.5" aria-hidden="true" />
             Independent Automation Operator & Builder
+          </p>
+        </Reveal>
+        <Reveal className="mb-5">
+          <p className="headline text-3xl leading-none text-ink/90 sm:text-4xl">
+            Gavin Pelletier
           </p>
         </Reveal>
         <Reveal as="h1" className="headline max-w-4xl text-5xl leading-[0.98] text-ink sm:text-6xl lg:text-7xl">
